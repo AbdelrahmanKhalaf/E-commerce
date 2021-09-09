@@ -1,0 +1,79 @@
+<p *ngIf="!errorMessage" class="text-center">
+  <a routerLink="/auth/register" class="btn btn-info col-md-12 ">Add New User</a>
+</p>
+<p *ngIf="errorMessage" class="text-center">
+  <span routerLink="/auth/register" class="alert alert-danger ">Error , You cannot reach here </span>
+</p>
+<mat-progress-spinner *ngIf="!users" mode="indeterminate" class="text-center" color="accent"></mat-progress-spinner>
+
+<div *ngIf="!errorMessage users " class="content" >
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card ">
+        <div class="card-header">
+          <h4 class="card-title"> Simple Table</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table tablesorter " id="">
+              <thead class=" text-primary">
+                <tr>
+                  <th>
+                    Name
+                  </th>
+                  <th>
+                    isAdmin
+                  </th>
+                  <th>
+                    phone
+                  </th>
+                  <th class="text-center">
+                    Adress
+                  </th>
+                  <th class="text-center">
+                    verify
+                  </th>
+                  <th class="text-center">
+                    block
+                  </th>
+                  <th class="text-center">
+                    edit
+                  </th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let user of users">
+                <tr>
+                  <td>
+                    <a routerLink="/users/all-users/details-user/{{user.name}}">{{user.name}} </a>
+                  </td>
+                  <td>
+                    <p *ngIf="!user.isAdmin">User</p>
+                    <p *ngIf="user.isAdmin">Admin</p>
+                  </td>
+                  <td>
+                    0{{user.phone}}
+                  </td>
+                  <td class="text-center">
+                    {{user.address}}
+                  </td>
+                  <td class="text-center">
+                    <p *ngIf="!user.verify">Unverify</p>
+                    <p *ngIf="user.verify">Verify</p>
+                  </td>
+                  <td class="text-center">
+                    <p *ngIf="!user.blocked">UnBlocked</p>
+                    <p *ngIf="user.blocked">blocked</p>
+
+                  </td>
+                  <td class="text-center">
+                    <a routerLink="/users/all-users/details-user/update/{{user.name}}" class="btn btn-info">Edit</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

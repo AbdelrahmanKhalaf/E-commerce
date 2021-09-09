@@ -1,0 +1,41 @@
+<div class="content">
+  <div class="container">
+    <div class="col-md-4 w3ls_dresses_grid_left">
+      <app-side-bar></app-side-bar>
+    </div>
+    <div class="top-brands">
+      <h3 class="lead">Sale {{this.sale}} % </h3>
+    </div>
+    <div class="col-md-8 col-sm-8 women-dresses">
+      <div class="women-set1">
+        <div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s"
+          *ngFor="let prodact of prodacts ; index as i">
+          <a routerLink="{{prodact._id}}">
+            <div class="product-img">
+              <img src="http://localhost:3000/{{prodact.img[0].img}}" alt="" />
+              <div class="p-mask">
+                <form action="#" method="post">
+                  <input type="hidden" name="cmd" value="_cart" />
+                  <input type="hidden" name="add" value="1" />
+                  <input type="hidden" name="w3ls1_item" value="Night dress" />
+                  <input type="hidden" name="amount" value="50.00" />
+                  <button routerLink="{{prodact._id}}" type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i>
+                    Add to cart</button>
+                </form>
+              </div>
+            </div>
+          </a>
+          <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+          <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+          <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+          <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+          <i class="fa fa-star gray-star" aria-hidden="true"></i>
+          <h4><a routerLink="{{prodact._id}}">{{prodact.title_en |uppercase}}</a></h4>
+          <h5>{{prodact.price}}$</h5>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+
+    </div>
+  </div>
+</div>

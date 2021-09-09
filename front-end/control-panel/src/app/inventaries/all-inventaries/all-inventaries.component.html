@@ -1,0 +1,82 @@
+
+<p *ngIf="errorMessage" class="text-center">
+  <span routerLink="/auth/register" class="alert alert-danger ">Error , You cannot reach here </span>
+</p>
+<div *ngIf="!errorMessage" class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card ">
+        <div class="card-header">
+          <h4 class="card-title"> Inventories Orders</h4>
+          <label>filter by status Inventaries</label>
+          <br>
+          <select class="control-form" value="all"  #selectList (change)="filter(selectList.value)"  >
+            <option value="all">All</option>
+            <option value="0">Cancale</option>
+            <option value="1">Buy</option>
+          </select>
+        </div>
+        <div class="card-body">
+          <mat-progress-spinner *ngIf="!inventories" mode="indeterminate" class="text-center"  color="accent"></mat-progress-spinner>
+
+          <div class="table-responsive">
+            <table class="table tablesorter " id="">
+              <thead class=" text-primary">
+                <tr>
+                  <th class="text-center">
+                    Number of History
+                </th>
+                  <th>
+                    Name User
+                  </th>
+                  <th>
+                    Order
+                  </th>
+                  <th>
+                    Order Status
+                  </th>
+                  <th class="text-center">
+                    last Change
+                  </th>
+                  <th class="text-center">
+                    count of the order
+
+                  </th>
+
+
+
+                </tr>
+              </thead>
+              <tbody *ngFor="let inventory of inventories ; index as i ">
+
+                <tr>
+                  <td class="text-center">
+                    {{i+1}}
+                  </td>
+                  <td>
+                    <a routerLink="/history/all-history/details-user/{{inventory.userId.name}}">{{inventory.userId.name}}</a>
+                  </td>
+                  <td>
+                    <a routerLink="/prodacts/all-prodacts/details-prodact/{{inventory.idToView}}">{{inventory.titleProdact}}  </a>
+                  </td>
+                  <td>
+                    <p *ngIf="inventory.status == 0"> Cancle</p>
+                    <p *ngIf="inventory.status == 1"> Buy</p>
+                  </td>
+                  <td class="text-center">
+                    {{inventory.date| date:"short"}}
+
+                  </td>
+                  <td class="text-center">
+                   {{ inventory.count}}
+                  </td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

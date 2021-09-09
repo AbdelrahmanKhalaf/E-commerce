@@ -1,0 +1,125 @@
+
+<p *ngIf="errorMessage" class="text-center">
+  <span routerLink="/auth/register" class="alert alert-danger ">Error , You cannot reach here </span>
+</p>
+<div *ngIf="!errorMessage" class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card ">
+        <div class="card-header">
+          <h4 class="card-title"> Histroies Prodacts</h4>
+          <label>filter by status prodact</label>
+          <br>
+          <div class="form-group">
+            <select class="form-control" style="color: black;" value="all"  #selectList (change)="filter(selectList.value)"  >
+              <option value="all">All</option>
+              <option value="addProdact">Add Prodact</option>
+              <option value="deleteAttribute">Delete Attribute</option>
+              <option value="updateAttribute">Update Attribute</option>
+              <option value="updateCatgeory">Update Catgeory</option>
+              <option value="deleteCatgeory">Delete Catgeory</option>
+              <option value="updateProdact">Update Prodact</option>
+              <option value="deleteProdact">Delete Prodact</option>
+            </select>
+          </div>
+
+        </div>
+
+        <mat-progress-spinner *ngIf="!histories" mode="indeterminate" class="text-center"  color="accent"></mat-progress-spinner>
+        <p *ngIf="message[0]" class="alert alert-success lead text-center" style="font-size: large;"><span *ngIf="message.length > 0" class="alert alert-danger">{{message.length}}</span>{{message[0]}}</p>
+        <div class="card-body" *ngIf="histories">
+          <div class="table-responsive">
+            <table class="table tablesorter " id="">
+              <thead class=" text-primary">
+                <tr>
+                  <th class="text-center">
+                    Number of History
+                </th>
+                  <th>
+                    Name User
+                  </th>
+                  <th  class="text-center">
+                   Delete
+                  </th>
+                  <th>
+                    Prodact
+                  </th>
+                  <th>
+                    Prodact Status
+                  </th>
+                  <th class="text-center">
+                    Data Out
+                  </th>
+                  <th class="text-center">
+                    Email User
+                  </th>
+                  <th class="text-center">
+                  </th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let history of histories ; index as i ">
+
+                <tr>
+                  <td class="text-center">
+                    <a routerLink="details/{{history._id}}">{{i+1}}
+                    </a>
+                  </td>
+                  <td>
+                    <a routerLink="/history/all-history/details-user/{{history.userId.name}}">{{history.userId.name}} </a>
+                  </td>
+                  <td>
+                    <p class="lead text-center" *ngIf="history.prodact.delete">Yes</p>
+                    <p class="lead text-center" *ngIf="!history.prodact.delete">No</p>
+                  </td>
+                  <td>
+                    <a routerLink="/history/all-history/details-prodact/{{history.prodact.idProdact}}">{{history.prodact.name}}</a>
+                  </td>
+                  <td>
+                    {{history.status}}
+                  </td>
+                  <td class="text-center">
+                    {{history.outDate| date:"short"}}
+
+                  </td>
+                  <td class="text-center">
+                    {{history.userId.email}}
+                  </td>
+                  <td class="text-center">
+                      <a style="cursor: pointer ; margin-left : 30px; "  (click)="historyDelete(history._id,i)"> <i class="tim-icons icon-simple-remove text-danger"></i></a>
+                  </td>
+
+                </tr>
+
+              </tbody>
+
+            </table>
+            <nav *ngIf=" !status || status == 'all'" aria-label="Page navigation example">
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" [routerLink]="['/history/all-history']"
+                    queryParamsHandling="preserve" (click)="perves()">Previous</a></li>
+                <li *ngFor="let item of NumberOfPages , index as i" class="page-item"><a
+                    [routerLink]="['/history/all-history']" (click)="prodact(i+1)" class="page-link">{{i+1}}</a>
+                </li>
+
+                <li class="page-item"><a class="page-link" [routerLink]="['/history/all-history']" (click)="next()"
+                    queryParamsHandling="preserve">Next</a></li>
+              </ul>
+            </nav>
+            <nav  *ngIf="status && status != 'all'" aria-label="Page navigation example">
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" [routerLink]="['/history/all-history']"
+                    queryParamsHandling="preserve" (click)="perveswithFilter()">Previous</a></li>
+                <li *ngFor="let item of NumberOfPages , index as i" class="page-item"><a
+                    [routerLink]="['/history/all-history']" (click)="prodactwithFilter(i+1)" class="page-link">{{i+1}}</a>
+                </li>
+
+                <li class="page-item"><a class="page-link" [routerLink]="['/history/all-history']" (click)="nextwithFilter()"
+                    queryParamsHandling="preserve">Next</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

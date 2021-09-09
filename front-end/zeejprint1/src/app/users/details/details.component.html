@@ -1,0 +1,61 @@
+<div class="content">
+  <div class="container">
+    <app-side-bar></app-side-bar>
+    <div class="col-md-9 col-sm-12 w3ls_dresses_grid_left ">
+      <div class="w3ls_dresses_grid_left_grid">
+        <div class="w3ls_dresses_grid_left_grid_sub newwidth">
+          <app-nav-bar></app-nav-bar>
+          <div class="ecommerce_dres-type">
+            <div class="container">
+
+              <div class="col-md-5 col-sm-12 w3ls_dresses_grid_left ">
+                <div class="w3ls_dresses_grid_left_grid">
+                  <h3 class="padding-left">My Informtion</h3>
+                  <div class="w3ls_dresses_grid_left_grid_sub newwidth">
+                    <div class="ecommerce_dres-type">
+                      <ul *ngIf="userDetails" >
+                        <li><label>Name : </label> <span> {{userDetails.name}}</span></li>
+                        <hr>
+                        <li *ngIf="userDetails.gender !=null"><label>Gender : </label> <span *ngIf="userDetails.gender == 0"> Male</span> <span
+                            *ngIf="userDetails.gender == 1"> Fmale</span></li>
+                        <hr *ngIf="userDetails.gender !=null">
+                        <li><label>Address : </label> <span> {{userDetails.address}}</span></li>
+                        <hr>
+                        <li><label>Email : </label> <span> {{userDetails.email}}</span></li>
+                        <hr>
+                        <li><label>My Walt Price  : </label> <span> {{userDetails.walt}} SAR</span></li>
+                        <hr>
+                        <li><label>Email Active : </label> <span class=" alert-danger"
+                            *ngIf="userDetails.verify === false"> No </span> <span class=" alert-success"
+                            *ngIf="userDetails.verify === true"> Yes </span></li>
+                        <hr>
+                        <li *ngIf="userDetails.age "><label>Age : </label> <span> {{userDetails.age }} Years</span></li>
+
+
+                      </ul>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-12 w3ls_dresses_grid_left ">
+                <div class="w3ls_dresses_grid_left_grid">
+                  <h3 class="padding-left">My Photo</h3>
+                  <div class="w3ls_dresses_grid_left_grid_sub newwidth">
+                    <div class="ecommerce_dres-type">
+                      <ul *ngIf="userDetails">
+                        <img src="http://localhost:3000/{{userDetails.avatar}}">
+                      </ul>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>

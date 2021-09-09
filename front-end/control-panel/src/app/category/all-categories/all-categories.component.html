@@ -1,0 +1,62 @@
+
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card ">
+        <div class="card-header">
+          <h4 class="card-title"> Orders Of Users</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <a routerLink="add-category" class="btn btn-danger col-md-12 ">Add New Category</a>
+            <mat-progress-spinner *ngIf="!categories" mode="indeterminate" class="text-center"  color="accent"></mat-progress-spinner>        <div class="card-body">
+
+            <table class="table tablesorter " id="">
+              <p class="alert alert-success" *ngIf="message[0]"><span>{{message.lenght}}</span>{{message[0]}}</p>
+
+              <thead class=" text-primary">
+                <tr>
+                  <th>
+                    Number OF categories
+                  </th>
+                  <th>
+                    Name OF categories
+                  </th>
+                  <th>
+                   Edit
+                  </th>
+                  <th>
+                    delete
+                   </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let order of categories ; index as i  ">
+                  <td>
+                    <a routerLink="details-category/{{order._id}}"> {{i+1}} </a>
+
+
+                  </td>
+                  <td>
+                    {{order.title_en}}
+                  </td>
+                  <td>
+                    <a class="btn btn-success" routerLink="update-category/{{order._id}}"> Edit </a>
+
+                  </td>
+                  <td>
+                    <a class="btn btn-danger" (click)="delete(order._id,i)">X </a>
+
+                  </td>
+
+                </tr>
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

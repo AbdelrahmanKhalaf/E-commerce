@@ -1,0 +1,18 @@
+.rounded {
+  width: 23%;
+  height: 50%;
+}
+
+.buto{
+  text-transform: none;
+  z-index: 99999999;
+  /* float: revert; */
+  position: absolute;
+  float: right;
+
+}
+.m{
+  margin-left: 59px;
+
+}
+

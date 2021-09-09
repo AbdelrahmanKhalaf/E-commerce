@@ -1,0 +1,180 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Add New Prodact</h5>
+        </div>
+        <div class="card-body">
+          <p *ngIf="errorMessage" class="alert alert-danger text-left">{{errorMessage}}</p>
+          <form [formGroup]="form" (ngSubmit)="makeDone()">
+            <div class="row">
+              <div class="col-md-6 px-md-1">
+                <div class="form-group">
+                  <label>Price</label>
+                  <input type="text" class="form-control" placeholder="price" formControlName="price">
+                  <div *ngIf="(price.touched || errorMessage) && sale.invalid  " class="text-danger ">
+                    <strong *ngIf="price.errors?.required">Please
+                        enter price</strong>
+                </div>
+                </div>
+              </div>
+              <div class="col-md-6 pl-md-1">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Sale</label>
+                  <input type="email" class="form-control" placeholder="sale" formControlName="sale">
+                  <div *ngIf="(sale.touched || errorMessage) && sale.invalid  " class="text-danger ">
+                    <strong *ngIf="sale.errors?.required">Please
+                        enter sale</strong>
+                </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 px-md-1">
+                <div class="form-group">
+                  <label>Title Arabic</label>
+                  <input type="text" class="form-control" placeholder="Title Arabic" formControlName="title_ar">
+                </div>
+                <div *ngIf="(title_ar.touched || errorMessage) && title_ar.invalid " class="text-danger ">
+                  <strong *ngIf="sale.errors?.required">Please
+                      enter Title Arabic</strong>
+              </div>
+              </div>
+              <div class="col-md-6 pl-md-1">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Title English</label>
+                  <input type="email" class="form-control" placeholder="Title English" formControlName="title_en">
+                </div>
+                <div *ngIf="(title_en.touched || errorMessage) && title_en.invalid " class="text-danger ">
+                  <strong *ngIf="title_en.errors?.required">Please
+                      enter Title English</strong>
+              </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 px-md-1">
+                <div class="form-group">
+                  <label>Description Arabic</label>
+                  <textarea rows="4" cols="80" class="form-control" formControlName="des_ar" placeholder="Here can be prodact description arabic" ></textarea>
+                  <div *ngIf="(des_ar.touched || errorMessage) && sale.invalid " class="text-danger ">
+                    <strong *ngIf="des_ar.errors?.required">Please
+                        enter Description Arabic</strong>
+                </div>
+                </div>
+              </div>
+              <div class="col-md-6 pl-md-1">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Description English</label>
+                  <textarea rows="4" cols="80" class="form-control" formControlName="des_en" placeholder="Here can be prodact description english" ></textarea>
+                  <div *ngIf="(des_en.touched || errorMessage) && des_en.invalid" class="text-danger ">
+                    <strong *ngIf="des_en.errors?.required">Please
+                        enter Description English</strong>
+                </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-8 pl-md-1">
+                <div class="form-group">
+                  <label >Keywords Arabic And English</label>
+                  <textarea rows="4" cols="80" class="form-control" formControlName="keywords" placeholder="Here can be prodact keywords arabic and english" ></textarea>
+                  <div *ngIf="(keywords.touched || errorMessage) && keywords.invalid" class="text-danger ">
+                    <strong *ngIf="keywords.errors?.required">Please
+                        enter Keywords</strong>
+                </div>
+                </div>
+              </div>
+              <div class="col-md-4 ">
+                <div class="form-group">
+
+                  <label>Category</label>
+
+                  <select type="text" class="form-control " multiple  placeholder="kindOfCategory" formControlName="kindOfCategory">
+                    <option *ngFor="let catg of subCatg" value="{{catg._id}}" style="color: black;">{{catg.title_en}} </option>
+                  </select>
+                  <div *ngIf="(kindOfCategory.touched || errorMessage) && kindOfCategory.invalid" class="text-danger ">
+                    <strong *ngIf="kindOfCategory.errors?.required">Please
+                        enter Category</strong>
+                </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row">
+
+              <div class="col-md-12">
+                <form formArrayName="attributes">
+                  <div *ngFor="let attribut of getAtrb.controls ; index as i ">
+                    <div [formGroup]="attribut">
+                      <div class="row">
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <label>Value Arabic</label>
+
+                            <input class="form-control" style="display: block;" formControlName="value_ar">
+
+                          </div>
+
+                        </div>
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <label>Value English</label>
+
+                            <input class="form-control" style="display: block;" formControlName="value_en">
+
+                          </div>
+
+                        </div>
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <label>Key Arabic</label>
+
+                            <input class="form-control" style="display: block;" formControlName="key_ar">
+
+                          </div>
+
+                        </div>
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <label>Key English</label>
+
+                            <input class="form-control" style="display: block;" formControlName="key_en">
+
+                          </div>
+
+                        </div>
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <br>
+                            <span> <button type="button" class="btn btn-danger" (click)="remove(i)">X</button></span>
+
+
+                          </div>
+
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <p *ngIf="(attributes.touched  && attributes.invalid) && errorMessage " class="text-danger ">
+                    <strong *ngIf="attributes.errors?.required">Please
+                      enter attributes</strong>
+                </p>
+                </form>
+
+              </div>
+            </div>
+            <span >
+              <button type="button" class="btn btn-danger" (click)="addAtrb()">Add Attribute</button></span>
+
+          </form>
+        </div>
+        <div class="card-footer">
+          <button type="submit" (click)="makeDone()" class="btn btn-fill btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+
+  </div>

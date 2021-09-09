@@ -1,0 +1,29 @@
+<div class="header-bottom-w3ls">
+  <div class="container">
+    <div class="col-md-7 col-sm-12 navigation-agileits">
+      <nav class="navbar navbar-default">
+        <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+          <ul class="nav navbar-nav ">
+            <li [routerLinkActive]="['active']">
+              <a [routerLink]="['/user/setting']" class="hyper ">
+                <span>Setting</span>
+              </a>
+            </li>
+            <li [routerLinkActive]="['active']">
+              <a [routerLink]="['/user/walt-add']" class="hyper ">
+                <span>Add To Wallt</span>
+              </a>
+            </li>
+            <li *ngIf="details&& details.verify === false" [routerLinkActive]="['active']"><a [routerLink]="['/user/resend-email']" class="hyper"><span>Activate
+                  Email</span></a>
+            </li>
+            <li  *ngIf=" details &&!details.age && !details.gender" [routerLinkActive]="['active']"><a [routerLink]="['/user/setting']" class="hyper"><span>Complate
+              Informtion</span></a>
+        </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>

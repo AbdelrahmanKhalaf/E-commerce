@@ -1,0 +1,35 @@
+<div class="login">
+
+  <div class="main-agileits">
+    <div class="form-w3agile">
+      <h3>Login</h3>
+      <p class="alert alert-danger" *ngIf="errorMessage && !message">{{errorMessage}}</p>
+      <p class="alert alert-success" *ngIf="message && !errorMessage" >{{message}}</p>
+      <form [formGroup]="form" (ngSubmit)="makeLogin()" method="post" *ngIf="!message">
+        <div class="key">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+          <input type="text" name="Email" required="pleass add email" placeholder="Email" formControlName="email">
+
+          <div class="clearfix"></div>
+          <span *ngIf="(email.touched || errorMessage) && email.invalid  " class="text-danger ">
+            <strong *ngIf="email.errors?.required">Please
+              enter email</strong>
+          </span>
+        </div>
+        <div class="key">
+          <i class="fa fa-lock" aria-hidden="true"></i>
+          <input type="password" name="Password" required="" placeholder="Password" formControlName="password">
+          <span *ngIf="(password.touched || errorMessage) && password.invalid  " class="text-danger ">
+            <strong *ngIf="password.errors?.required">Please
+              enter password</strong>
+          </span>
+          <div class="clearfix"></div>
+
+        </div>
+        <p class="text-left" style="margin-bottom: 20px;">are you haven't email !? <a routerLink="/auth/register"> Register</a>,<a routerLink="/auth/forget-password"> Forget Password</a> </p>
+
+        <input type="submit" value="Login">
+      </form>
+    </div>
+  </div>
+</div>

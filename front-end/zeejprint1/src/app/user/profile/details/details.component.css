@@ -1,0 +1,32 @@
+.menu{
+  top: calc(143px);
+}
+.photo-content .cover-photo {
+  background: url('/assets/profile/images/profile/cover.jpg');
+}
+
+.padding-left::before{
+  width: 3%;
+}
+.active{
+  background: #00e58b;
+  color: aliceblue;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 22px;
+  padding-left: 22px;
+}
+a:hover{
+  background: #00e58b;
+  color: aliceblue;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 22px;
+}
+.newwidth{
+  width: 100%;
+}
+.header-bottom-w3ls {
+  padding: 0px
+}
+

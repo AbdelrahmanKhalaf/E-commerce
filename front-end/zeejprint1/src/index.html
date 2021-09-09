@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Zeejprint</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="https://zeejprint.com/website/custom/images/header-images/zeejlogo.png">
+  <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>E-SHOP HTML Template</title>
+
+	<!-- Google font -->
+	<meta name="keywords" content="Fashion Club Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<!-- css -->
+	<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link rel="stylesheet" href="assets/css/style.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="assets/css/flexslider.css" type="text/css" media="screen" />
+
+	<!--// css -->
+	<!-- font -->
+	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+	<!-- //font -->
+</head>
+<body>
+  <app-root></app-root>
+  <script defer src="assets/js/jquery.flexslider.js"></script>
+
+  <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+  <script src="assets/js/jquery-1.11.1.min.js"></script>
+  <script src="assets/js/bootstrap.js"></script>
+  <script type="text/javascript">
+	$(window).load(function() {
+		$("#flexiselDemo1").flexisel({
+			visibleItems: 4,
+			animationSpeed: 1000,
+			autoPlay: false,
+			autoPlaySpeed: 3000,
+			pauseOnHover: true,
+			enableResponsiveBreakpoints: true,
+			responsiveBreakpoints: {
+				portrait: {
+					changePoint:480,
+					visibleItems: 1
+				},
+				landscape: {
+					changePoint:640,
+					visibleItems:2
+				},
+				tablet: {
+					changePoint:768,
+					visibleItems: 3
+				}
+			}
+		});
+
+	});
+</script>
+<script>
+	$(document).ready(function(){
+		$(".dropdown").hover(
+			function() {
+				$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+				$(this).toggleClass('open');
+			},
+			function() {
+				$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+				$(this).toggleClass('open');
+			}
+		);
+	});
+	</script>
+	<script src="assets/js/jquery.wmuSlider.js"></script>
+	<script>
+		$('.example1').wmuSlider();
+	</script>
+	<script src="assets/js/easyResponsiveTabs.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#horizontalTab').easyResponsiveTabs({
+				type: 'default', //Types: default, vertical, accordion
+				width: 'auto', //auto or any width like 600px
+				fit: true   // 100% fit in a container
+			});
+		});
+	</script>
+	<script src="assets/js/minicart.js"></script>
+	<script>
+		w3ls1.render();
+
+		w3ls1.cart.on('w3sb1_checkout', function (evt) {
+			var items, len, i;
+
+			if (this.subtotal() > 0) {
+				items = this.items();
+
+				for (i = 0, len = items.length; i < len; i++) {
+					items[i].set('shipping', 0);
+					items[i].set('shipping2', 0);
+				}
+			}
+		});
+	</script>
+<script defer type="text/javascript" src="assets/js/jquery.flexisel.js"></script>
+
+<script>
+	// Can also be used with $(document).ready()
+	$(window).load(function() {
+
+	  $('.flexslider').flexslider({
+		animation: "slide",
+		controlNav: "thumbnails"
+	  });
+	});
+</script>
+<script src="https://js.stripe.com/v3/"></script>
+</body>
+</html>

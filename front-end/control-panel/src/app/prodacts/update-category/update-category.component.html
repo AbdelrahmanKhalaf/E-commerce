@@ -1,0 +1,40 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Add New Prodact</h5>
+        </div>
+        <div class="card-body">
+          <p *ngIf="errorMessage" class="alert alert-danger text-left">{{errorMessage}}</p>
+          <form [formGroup]="form" (ngSubmit)="addCategory()">
+            <div class="row">
+              <div class="col-md-4 ">
+                <div class="form-group">
+
+                  <label>Category</label>
+
+                  <select type="text" class="form-control " multiple  placeholder="kindOfCategory" formControlName="kindOfCategory">
+                    <option *ngFor="let catg of subCatg" value="{{catg._id}}" style="color: black;">{{catg.title_en}} </option>
+                  </select>
+                  <div *ngIf="(kindOfCategory?.touched || errorMessage) && kindOfCategory?.invalid" class="text-danger ">
+                    <strong *ngIf="kindOfCategory?.errors?.required">Please
+                        enter Category</strong>
+                </div>
+                </div>
+              </div>
+
+            </div>
+
+
+
+
+          </form>
+        </div>
+        <div class="card-footer">
+          <button type="submit" (click)="addCategory()" class="btn btn-fill btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+
+  </div>

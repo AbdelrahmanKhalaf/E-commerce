@@ -1,0 +1,135 @@
+<p class="text-center">
+  <a routerLink="/prodacts/all-prodacts/add-prodact" class="btn btn-info col-md-12 ">Add New Prodact</a>
+</p>
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card ">
+        <div class="card-header">
+          <h4 class="card-title"> Simple Table</h4>
+        </div>
+        <th><p class="alert alert-success lead" *ngIf="message&&message.length >0  "><span  *ngIf="message.length >0" class="text-success lead alert alert-danger">{{message.length}}</span>{{message[0]}}</p></th>
+          <div class="table-responsive">
+            <mat-progress-spinner *ngIf="!prodacts" mode="indeterminate" class="text-center"  color="accent"></mat-progress-spinner>
+            <div class="card-body">
+
+            <table class="table tablesorter " *ngIf="prodacts">
+              <thead class=" text-primary">
+                <tr>
+                  <th>
+                    Id
+                  </th>
+                  <th class="text-left">
+                    Attributes
+                  </th>
+                  <!-- <th>
+                     Categories
+                  </th> -->
+                  <th>
+                    Kind Of Category
+                  </th>
+                  <th class="text-center">
+                    Price
+                  </th>
+                  <th class="text-center">
+                    Sale
+                  </th>
+                  <th class="text-center">
+                    Edit
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prodact of prodacts ; index as IProdact">
+                  <td>
+                    <a routerLink="details-prodact/{{prodact._id}}">{{prodact.title_en}} </a>
+                    <br>
+                    <span>Created :</span> <small>{{prodact.dateOut | date:'short'}}</small>
+                  </td>
+                  <td>
+                    <thead class="text-primary">
+                      <tr>
+                        <th>
+                          Attribute
+                        </th>
+                        <th>
+                          Kind
+                        </th>
+                        <th>
+                          Edit
+                        </th>
+                        <th>
+                          <a routerLink="add-attribut/{{prodact._id}}"> <i class="tim-icons icon-simple-add"></i>
+                          </a>
+                        </th>
+                      </tr>
+                    </thead>
+              <tbody>
+                <tr *ngFor="let attribute of prodact.attributes ; index as i ">
+                  <td>{{attribute.key_en }} </td>
+                  <td>{{attribute.value_en}}</td>
+                  <td>
+                    <a routerLink="update-attribut/{{prodact._id}}/{{attribute._id}}"> <i class="tim-icons icon-pencil"></i>
+
+                  </a>
+                </td>
+                <td><a style="cursor: pointer;"  (click)="delete(prodact._id,attribute._id ,IProdact,i)"> <i class="tim-icons icon-simple-remove text-danger"></i>
+
+                </a>
+              </td>
+                </tr>
+                <tr class="text-right"></tr>
+              </tbody>
+              </td>
+              <td>
+                <thead>
+                  <th>
+                    <a routerLink="/prodacts/all-prodacts/update-category/{{prodact._id}}" > <i class="tim-icons icon-simple-add"></i></a>
+                  </th>
+                </thead>
+                <tbody>
+
+                  <tr *ngFor="let catg of prodact.kindOfCategory ; index as iCategory">
+                    <td>{{catg.title_en}}</td>
+                    <td>
+                      <a style="cursor: pointer ; margin-left : 30px; "  (click)="deleteCategoryProdact(prodact._id,catg._id,IProdact,iCategory)"> <i class="tim-icons icon-simple-remove text-danger"></i></a></td>
+                  </tr>
+                </tbody>
+
+
+              </td>
+
+              <td class="text-center">
+                {{prodact.price}}
+              </td>
+              <td class="text-center">
+                {{prodact.sale}} %
+              </td>
+
+
+              <td class="text-center">
+                <a routerLink="/prodacts/all-prodacts/update/{{prodact._id}}" > <i class="tim-icons icon-pencil"></i></a>
+                <a style="cursor: pointer ; margin-left : 30px; "  (click)="prodactDelete(prodact._id,IProdact)"> <i class="tim-icons icon-simple-remove text-danger"></i></a>
+
+              </td>
+              </tr>
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item"><a class="page-link" [routerLink]="['/prodacts/all-prodacts']"
+                      queryParamsHandling="preserve" (click)="perves()">Previous</a></li>
+                  <li *ngFor="let item of pages , index as i" class="page-item"><a
+                      [routerLink]="['/prodacts/all-prodacts']" (click)="prodact(i+1)" class="page-link">{{i+1}}</a>
+                  </li>
+
+                  <li class="page-item"><a class="page-link" [routerLink]="['/prodacts/all-prodacts']" (click)="next()"
+                      queryParamsHandling="preserve">Next</a></li>
+                </ul>
+              </nav>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

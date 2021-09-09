@@ -1,0 +1,43 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Update Category</h5>
+        </div>
+        <mat-progress-spinner *ngIf="!category" mode="indeterminate" class="text-center"  color="accent"></mat-progress-spinner>        <div class="card-body">
+
+        <div class="card-body">
+          <p *ngIf="errorMessage" class="alert alert-danger text-left">{{errorMessage}}</p>
+          <form [formGroup]="Form" (ngSubmit)="register()" *ngIf="category">
+            <div class="row">
+              <div class="col-md-6 px-md-1">
+                <div class="form-group">
+                  <label>Title Arabic</label>
+                  <input type="text" class="form-control" placeholder="Title Arabic" formControlName="title_ar" [(ngModel)]="category.title_ar" >
+                  <div *ngIf="(title_ar?.touched || errorMessage) && title_ar?.invalid  " class="text-danger ">
+                    <strong *ngIf="title_ar?.errors?.required">Please
+                        enter title arabic</strong>
+                </div>
+                </div>
+              </div>
+              <div class="col-md-6 pl-md-1">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Title English</label>
+                  <input type="email" class="form-control" placeholder="Title English" formControlName="title_en" [(ngModel)]="category.title_en">
+                  <div *ngIf="(title_en?.touched || errorMessage) && title_en?.invalid  " class="text-danger ">
+                    <strong *ngIf="title_en?.errors?.required">Please
+                        enter title english</strong>
+                </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button type="submit" (click)="register()" class="btn btn-fill btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+
+</div>

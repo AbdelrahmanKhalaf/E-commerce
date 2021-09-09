@@ -1,0 +1,58 @@
+.banner-agile {
+  background: url("http://localhost:3000/assets/img/home.jpg");
+}
+.bb-right-top {
+  background: url("http://localhost:3000/assets/img/60.jpg");
+  margin: 10px;
+}
+.bb-left-agileits-w3layouts-inner {
+  background: url("http://localhost:3000/assets/img/75.jpg");
+}
+.bb-middle-top {
+  background: url("http://localhost:3000/assets/img/30.jpg");
+  margin: 10px;
+}
+.back {
+  background-color: rgba(0, 0, 0, 0.5);
+  min-height: 580PX;
+}
+.back1 {
+  background-color: rgba(0, 0, 0, 0.5);
+  min-height: 235px;
+}
+
+@media screen and (max-width: 1080px){
+  .back {
+    min-height: 525px;
+  }
+}
+@media screen and (max-width: 667px){
+  .back {
+    min-height: 370px;
+  }
+}
+@media screen and (max-width: 568px){
+  .back {
+    min-height: 350px;
+  }
+}
+@media screen and (max-width: 480px){
+  .back {
+    min-height: 295px;
+  }
+}
+@media screen and (max-width: 568px){
+  .back1{
+    min-height: 200px;
+  }
+}
+@media screen and (max-width: 991px){
+  .back1{
+    min-height: 210px;
+
+  }
+
+}
+
+
+

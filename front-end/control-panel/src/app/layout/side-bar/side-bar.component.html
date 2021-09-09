@@ -1,0 +1,65 @@
+<div *ngIf="token" class="sidebar">
+    <!--
+      Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+  -->
+    <div class="sidebar-wrapper">
+      <div class="logo">
+        <a href="javascript:void(0)" class="simple-text logo-mini">
+          CT
+        </a>
+        <a href="javascript:void(0)" class="simple-text logo-normal">
+          Creative Tim
+        </a>
+      </div>
+      <ul class="nav">
+        <li class=" " [routerLinkActive]="['active']">
+          <a [routerLink]="['home']">
+            <i class="tim-icons icon-chart-pie-36" ></i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+        <li  [routerLinkActive]="['active']">
+          <a  [routerLink]="['orders']">
+            <i class="tim-icons icon-atom"></i>
+            <p>Orders</p>
+          </a>
+        </li>
+        <li  [routerLinkActive]="['active']">
+          <a  [routerLink]="['category']">
+            <i class="tim-icons icon-bullet-list-67"></i>
+            <p>Categories</p>
+          </a>
+        </li>
+        <li  [routerLinkActive]="['active']">
+          <a  [routerLink]="['subcategory']">
+            <i class="tim-icons icon-vector"></i>
+            <p>Sub Categories</p>
+          </a>
+        </li>
+        <li [routerLinkActive]="['active']">
+          <a [routerLink]="['prodacts']">
+            <i class="tim-icons icon-pin"></i>
+            <p>Prodacts</p>
+          </a>
+        </li>
+        <li [routerLinkActive]="['active']">
+          <a  [routerLink]="['inventaries']" >
+            <i class="tim-icons icon-bell-55"></i>
+            <p>Inventaries</p>
+          </a>
+        </li>
+        <li [routerLinkActive]="['active']">
+          <a [routerLink]="['users']" >
+            <i class="tim-icons icon-single-02"></i>
+            <p>Users</p>
+          </a>
+        </li>
+        <li [routerLinkActive]="['active']">
+          <a [routerLink]="['history']">
+            <i class="tim-icons icon-puzzle-10"></i>
+            <p>History</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>

@@ -1,0 +1,23 @@
+<div class="container">
+  <mat-progress-spinner *ngIf="!category" mode="indeterminate" class="text-center"  color="accent"></mat-progress-spinner>
+
+  <div *ngIf="category">
+    <span>title en</span> <h2 class="blockquote blockquote-primary">{{category.title_en}}</h2>
+    <span>title ar</span>   <h2 class="blockquote blockquote-primary">{{category.title_ar}}</h2>
+    <div class="font-icon-detail" >
+     <img  *ngIf="category" class="img-fluid img-thumbnail rounded" src="http://localhost:3000/{{category.img}}">
+    </div>
+      <div class="col-md-8 blockquote blockquote-primary list-inline ">
+        <h5 class="text-primary">Category</h5>
+        <ul class="list-inline" >
+          <li  class="list-inline-item text-success"><span  class="text-danger"></span> name arabic : <span class="text-danger">{{category.IdCategory.title_ar}}</span> </li>
+          <li  class="list-inline-item text-success"><span  class="text-danger"></span> name english : <span class="text-danger">{{category.IdCategory.title_en}}</span> </li>
+        </ul>
+      </div>
+
+
+
+  </div>
+</div>
+
+

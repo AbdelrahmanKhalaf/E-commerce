@@ -1,0 +1,17 @@
+<p class="alert alert-danger" *ngIf="errorMessage && !message">{{errorMessage}}</p>
+<p class="alert alert-success" *ngIf="message && !errorMessage">{{message}}</p>
+<form role="form" class="contactForm" >
+  <div class="form-row">
+    <div class="form-group col-md-12">
+
+    </div>
+  </div>
+  <input type="file" name="avatar" class="form-control" id="avatar" (change)="fileSlecet($event)"
+  accept="image/*" />
+  <image-cropper *ngIf="Chack"  [imageChangedEvent]="imageChangedEvent" (imageCropped)="imageCropped($event)" [aspectRatio]="1 / 1"
+    [resizeToWidth]='250' [onlyScaleDown]='true' [cropperMinWidth]='450' [roundCropper]='true'
+    style="width: 400px;height: 500px;">
+  </image-cropper>
+  <div class="text-center btn " (click)="update()"><button type="submit">Add Image</button></div>
+
+</form>

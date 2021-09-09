@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+form .ng-invalid.ng-touched {
+
+  background: #fff;
+  border: 1px solid red !important;
+}
+.modal-open {
+  overflow: none;
+}
+.modal-backdrop.in {
+  opacity: 0px;
+}

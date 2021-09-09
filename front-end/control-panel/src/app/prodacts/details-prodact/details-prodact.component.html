@@ -1,0 +1,49 @@
+<div class="container">
+  <mat-progress-spinner *ngIf="!prodact && !error" mode="indeterminate" class="text-center" color="accent">
+  </mat-progress-spinner>
+  <p *ngIf="error" class="alert alert-danger text-center lead" style="font-size: large;">{{error}} or delete </p>
+  <div *ngIf="prodact && !error">
+    <h2 class="blockquote blockquote-primary">{{prodact.title_en}}</h2>
+        <div >
+          <span *ngFor="let img of prodact.img"><button class="buto " routerLink="{{img._id}}">Edit</button><a  style="color: red; cursor: pointer;" (click)="delete(img._id)" class="buto m">delete</a><img *ngIf="prodact" class="img-fluid img-thumbnail rounded" src="http://localhost:3000/{{img.img}}"> </span>
+        </div>
+
+
+    <p class="alert alert-danger" *ngIf="errorMessage && !message">{{errorMessage}}</p>
+    <p class="alert alert-success" *ngIf="message && !errorMessage">{{message}}</p>
+    <form role="form" class="contactForm" >
+      <div class="form-row">
+        <div class="form-group col-md-12">
+
+        </div>
+      </div>
+      <input type="file" name="avatar" class="form-control" id="avatar" (change)="fileSlecet($event)"
+      accept="image/*" />
+      <image-cropper *ngIf="Chack"  [imageChangedEvent]="imageChangedEvent" (imageCropped)="imageCropped($event)" [aspectRatio]="1 / 1"
+        [resizeToWidth]='250' [onlyScaleDown]='true' [cropperMinWidth]='450'
+        style="width: 400px;height: 500px;">
+      </image-cropper>
+      <div class="text-center btn " (click)="fileUpload()"><button type="submit">Add Image</button></div>
+
+    </form>
+    <h2 class="blockquote blockquote-primary text-danger">{{prodact.des_en}}</h2>
+    <div class="col-md-4 blockquote blockquote-success  list-inline">
+      <h5 class="text-primary">Categories</h5>
+      <ul class="list-inline">
+        <li *ngFor="let prodact of prodact.kindOfCategory" class="list-inline-item text-success">{{prodact.title_en}}
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-8 blockquote blockquote-primary list-inline ">
+      <h5 class="text-primary">Attributes</h5>
+      <ul class="list-inline">
+        <li *ngFor="let prodact of prodact.attributes , index as i" class="list-inline-item text-success"><span
+            class="text-danger">{{i+1}} -</span> {{prodact.key_en}} : <span
+            class="text-danger">{{prodact.value_en}}</span> ;</li>
+      </ul>
+    </div>
+
+
+
+  </div>
+</div>

@@ -1,0 +1,89 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Add New Prodact</h5>
+        </div>
+        <div class="card-body">
+          <p *ngIf="errorMessage" class="alert alert-danger text-left">{{errorMessage}}</p>
+          <form [formGroup]="form" (ngSubmit)="makeDone()">
+
+
+
+            <div class="row">
+
+              <div class="col-md-12">
+                <form formArrayName="attributes">
+                  <div *ngFor="let attribut of getAtrb.controls ; index as i ">
+                    <div [formGroup]="attribut">
+                      <div class="row">
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <label>Value Arabic</label>
+
+                            <input class="form-control" style="display: block;" formControlName="value_ar">
+
+                          </div>
+
+                        </div>
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <label>Value English</label>
+
+                            <input class="form-control" style="display: block;" formControlName="value_en">
+
+                          </div>
+
+                        </div>
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <label>Key Arabic</label>
+
+                            <input class="form-control" style="display: block;" formControlName="key_ar">
+
+                          </div>
+
+                        </div>
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <label>Key English</label>
+
+                            <input class="form-control" style="display: block;" formControlName="key_en">
+
+                          </div>
+
+                        </div>
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <br>
+                            <span> <button type="button" class="btn btn-danger" (click)="remove(i)">X</button></span>
+
+
+                          </div>
+
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <p *ngIf="(attributes.touched  || errorMessage ) &&  attributes.invalid" class="text-danger ">
+                    <strong *ngIf="attributes.errors?.required">Please
+                      enter attributes</strong>
+                </p>
+                </form>
+
+              </div>
+            </div>
+            <span >
+              <button type="button" class="btn btn-danger" (click)="addAtrb()">Add Attribute</button></span>
+
+          </form>
+        </div>
+        <div class="card-footer">
+          <button type="submit" (click)="makeDone()" class="btn btn-fill btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+
+  </div>

@@ -1,0 +1,60 @@
+.menu{
+  top: calc(143px);
+}
+.photo-content .cover-photo {
+  background: url('/assets/profile/images/profile/cover.jpg');
+}
+
+.padding-left::before{
+  width: 3%;
+}
+
+a:hover{
+  background: #00e58b;
+  color: aliceblue;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 22px;
+}
+.active{
+  background: #00e58b;
+  color: aliceblue;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 22px;
+  padding-left: 22px;
+}
+.newwidth{
+  width: 100%;
+}
+.header-bottom-w3ls {
+  padding: 0px
+}
+.castm{
+  width: 12%;
+  height: 68%;
+  border-radius: 4%;
+}
+.btn-danger {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+  float: right;
+  margin-right: 2px;
+
+}
+.btn-success {
+
+  float: right;
+  margin-right: 2px;
+
+}
+.form-control {
+  display: inline;
+  float: right;
+  margin-right: 2px;
+  width: 9%;
+  height: 34px;
+  padding: 4px 4px;
+}
+

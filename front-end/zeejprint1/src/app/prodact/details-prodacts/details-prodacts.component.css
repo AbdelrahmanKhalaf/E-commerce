@@ -1,0 +1,51 @@
+.menu{
+  top: calc(143px);
+}
+.photo-content .cover-photo {
+  background: url('/assets/profile/images/profile/cover.jpg');
+}
+
+.padding-left::before{
+  width: 3%;
+}
+
+a:hover{
+  background: #00e58b;
+  color: aliceblue;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 22px;
+}
+.active{
+  background: #00e58b;
+  color: aliceblue;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 22px;
+  padding-left: 22px;
+}
+.newwidth{
+  width: 100%;
+}
+.header-bottom-w3ls {
+  padding: 0px
+}
+.single-top-right .w3ls-cart {
+  width: 47%;
+}
+.single-top-right {
+  padding-left: 0em;
+}
+
+.w3ls_dresses_grid_left_grid_sub {
+  border: 1px solid #E1E1E1;
+  width: 167%; margin: 0px;
+  padding: 2em 1.5em 1em;
+}
+* {box-sizing:border-box}
+
+img {
+  width: 117%;
+  margin-bottom: -36px;
+  margin-top: 48px;
+}

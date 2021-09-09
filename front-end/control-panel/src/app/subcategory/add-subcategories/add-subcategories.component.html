@@ -1,0 +1,56 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Add Categories</h5>
+        </div>
+        <div class="card-body">
+          <p *ngIf="errorMessage" class="alert alert-danger text-left">{{errorMessage}}</p>
+          <form [formGroup]="Form" (ngSubmit)="register()">
+            <div class="row">
+              <div class="col-md-4 px-md-1">
+                <div class="form-group">
+                  <label>Title Arabic</label>
+                  <input type="text" class="form-control" placeholder="Title Arabic" formControlName="title_ar" >
+                  <div *ngIf="(title_ar?.touched || errorMessage) && title_ar?.invalid  " class="text-danger ">
+                    <strong *ngIf="title_ar?.errors?.required">Please
+                        enter title arabic</strong>
+                </div>
+                </div>
+              </div>
+              <div class="col-md-4 pl-md-1">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Title English</label>
+                  <input type="email" class="form-control" placeholder="Title English" formControlName="title_en">
+                  <div *ngIf="(title_en?.touched || errorMessage) && title_en?.invalid  " class="text-danger ">
+                    <strong *ngIf="title_en?.errors?.required">Please
+                        enter title english</strong>
+                </div>
+                </div>
+              </div>
+              <div class="col-md-4 ">
+                <div class="form-group">
+
+                  <label>Category</label>
+
+                  <select type="text" class="form-control"  placeholder="IdCategory" formControlName="IdCategory">
+
+                    <option *ngFor="let catg of subCatg" value="{{catg._id}}" style="color: black;">{{catg.title_en}} </option>
+                  </select>
+                  <div *ngIf="(IdCategory?.touched || errorMessage) && IdCategory?.invalid" class="text-danger ">
+                    <strong *ngIf="IdCategory?.errors?.required">Please
+                        enter Category</strong>
+                </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button type="submit" (click)="register()" class="btn btn-fill btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+
+</div>

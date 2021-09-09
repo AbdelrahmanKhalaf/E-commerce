@@ -1,0 +1,45 @@
+<div *ngIf="user" class="content" >
+  <div class="row">
+    <mat-progress-spinner *ngIf="!user" mode="indeterminate" class="text-center" color="accent"></mat-progress-spinner>
+
+    <div class="col-md-12 col-md-offset-2" *ngIf="user">
+      <div class="card card-user">
+        <div class="card-body">
+          <div class="card-text">
+            <div class="author">
+
+              <div class="block block-one"></div>
+              <div class="block block-two"></div>
+              <div class="block block-three"></div>
+              <div class="block block-four"></div>
+              <a href="javascript:void(0)">
+                <img class="avatar" src="http://localhost:3000/{{user.avatar}}" alt="...">
+                <h5 class="title">{{user.name}}</h5>
+              </a>
+              <p *ngIf="!user.isAdmin"  class="description">
+               User
+              </p>
+              <p *ngIf="user.isAdmin"  class="description">
+                Admin
+               </p>
+               <p *ngIf="!user.verify"  class="description">
+                 Unverify
+               </p>
+               <p *ngIf="user.verify"  class="description">
+                Verify
+                </p>
+               <p class="description">
+                {{user.phone}}
+               </p>
+               <p class="description">
+                {{user.email}}
+               </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

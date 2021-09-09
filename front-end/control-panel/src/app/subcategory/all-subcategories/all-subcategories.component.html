@@ -1,0 +1,57 @@
+
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card ">
+        <div class="card-header">
+          <h4 class="card-title"> catgs Of Users</h4>
+        </div>
+        <mat-progress-spinner *ngIf="!subCategory" mode="indeterminate" class="text-center"  color="accent"></mat-progress-spinner>        <div class="card-body">
+
+        <div class="card-body">
+          <div class="table-responsive">
+            <a routerLink="add-subcategory" class="btn btn-danger col-md-12 ">Add New Category</a>
+            <p class="alert alert-success" *ngIf="message[0]"><span>{{message.lenght}}</span>{{message[0]}}</p>
+
+            <table class="table tablesorter " id="">
+              <thead class=" text-primary">
+                <tr>
+                  <th>
+                    Number OF categories
+                  </th>
+                  <th>
+                    Name OF categories
+                  </th>
+                  <th>
+                   Edit
+                  </th>
+                  <th>
+                    Delete
+                   </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let catg of subCategory ; index as i  ">
+                  <td>
+                    <a routerLink="details-subcategory/{{catg._id}}"> {{i+1}} </a>
+                  </td>
+                  <td>
+                    {{catg.title_en}}
+                  </td>
+                  <td>
+                    <a class="btn btn-success" routerLink="update-subcategory/{{catg._id}}"> Edit </a>
+                  </td>
+                  <td>
+                    <a class="btn btn-danger" (click)="delete(catg._id,i)">X </a>
+
+                  </td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

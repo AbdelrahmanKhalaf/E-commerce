@@ -1,0 +1,53 @@
+<div class="content">
+  <div class="container">
+    <app-side-bar></app-side-bar>
+    <div class="col-md-9 col-sm-12 w3ls_dresses_grid_left ">
+      <div class="w3ls_dresses_grid_left_grid">
+        <div class="w3ls_dresses_grid_left_grid_sub newwidth">
+
+          <div class="ecommerce_dres-type">
+            <div class="container">
+
+              <div class="col-md-8 col-sm-12 w3ls_dresses_grid_left ">
+                <div class="w3ls_dresses_grid_left_grid">
+                  <h3 class="padding-left">Cahnge Email</h3>
+                  <div class="w3ls_dresses_grid_left_grid_sub newwidth">
+                    <div class="ecommerce_dres-type">
+                      <p class="alert alert-danger" *ngIf="errorMessage && !message">{{errorMessage}}</p>
+                      <p class="alert alert-success" *ngIf="message && !errorMessage" >{{message}}</p>
+                      <form [formGroup]="form" (ngSubmit)="save()" *ngIf="!message">
+                        <div class="key">
+                          <i class="fa fa-envelope" aria-hidden="true"></i>
+                          <input type="text" name="Email" required="pleass add email"  placeholder="Email" formControlName="email">
+
+                          <div class="clearfix"></div>
+                          <span *ngIf="(email.touched || errorMessage) && email.invalid  " class="text-danger ">
+                            <strong *ngIf="email.errors?.required">Please
+                              enter email</strong>
+                          </span>
+                        </div>
+                        <div class="key">
+                          <i class="fa fa-lock" aria-hidden="true"></i>
+                          <input type="password" name="Password" required="" placeholder="Password" formControlName="password">
+                          <span *ngIf="(password.touched || errorMessage) && password.invalid  " class="text-danger ">
+                            <strong *ngIf="password.errors?.required">Please
+                              enter password</strong>
+                          </span>
+                          <div class="clearfix"></div>
+
+                        </div>
+
+                        <input (click)="makeChange()" class="btn btn-primary" type="submit" value="Change Email">
+                      </form>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>

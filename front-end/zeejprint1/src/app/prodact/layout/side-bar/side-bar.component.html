@@ -1,0 +1,55 @@
+
+<div  class="w3ls_dresses_grid_left_grid">
+  <h3>Price</h3>
+  <div class="w3ls_dresses_grid_left_grid_sub">
+    <div class="ecommerce_dres-type">
+      <ul>
+        <li><a  style="cursor: pointer;" (click)="filterpriceLtAndGt(0,100)" >Under  SAR  100 </a> </li>
+        <li><a style="cursor: pointer;" (click)="filterpriceLtAndGt(100,500)" >SAR 100  - SAR 500  </a></li>
+        <li><a style="cursor: pointer;" (click)="filterpriceLtAndGt(500,1000)" >SAR 500 - SAR 1,000 </a></li>
+        <li><a style="cursor: pointer;" (click)="filterpriceLtAndGt(1000,2000)" >SAR 1,000 - SAR 2,000 </a></li>
+        <li><a style="cursor: pointer;" (click)="filterpriceLtAndGt(2000,3000)" >SAR 2,000 SAR 3,000 </a></li>
+        <li><a style="cursor: pointer;" (click)="filterpriceLtAndGt(3000,30000000)" >Over SAR 3,000 </a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="w3ls_dresses_grid_left_grid">
+  <h3>sale</h3>
+  <div class="w3ls_dresses_grid_left_grid_sub">
+    <div class="ecommerce_dres-type">
+      <ul *ngFor="let sale of prodactSale">
+        <li><a style="cursor: pointer;" (click)="filterSale(sale)" >{{sale}} %</a> </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="w3ls_dresses_grid_left_grid">
+  <h3>Color</h3>
+  <div class="w3ls_dresses_grid_left_grid_sub">
+    <div class="ecommerce_color">
+      <ul>
+        <li><a style="cursor: pointer;" (click)=" filterpriceAttribute('red')"><i></i> Red(5)</a></li>
+        <li><a style="cursor: pointer;" (click)=" filterpriceAttribute('brown')"><i></i> Brown(2)</a></li>
+        <li><a style="cursor: pointer;" (click)=" filterpriceAttribute('yellow')"><i></i> Yellow(3)</a></li>
+        <li><a style="cursor: pointer;" (click)=" filterpriceAttribute('violet')"><i></i> Violet(6)</a></li>
+        <li><a style="cursor: pointer;" (click)=" filterpriceAttribute('orange')"><i></i> Orange(2)</a></li>
+        <li><a style="cursor: pointer;" (click)=" filterpriceAttribute('blue')"><i></i> Blue(1)</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="w3ls_dresses_grid_left_grid">
+  <h3>Size</h3>
+  <div class="w3ls_dresses_grid_left_grid_sub">
+    <div class="ecommerce_color ecommerce_size">
+      <ul>
+        <li><a style="cursor: pointer;" (click)="filterpriceAttributeSize('a4')" >A4</a></li>
+        <li><a style="cursor: pointer;" (click)="filterpriceAttributeSize('a5')">A5</a></li>
+        <li><a style="cursor: pointer;" (click)="filterpriceAttributeSize('9*5')">9*5</a></li>
+        <li><a style="cursor: pointer;" (click)="filterpriceAttributeSize('small')">Small</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+

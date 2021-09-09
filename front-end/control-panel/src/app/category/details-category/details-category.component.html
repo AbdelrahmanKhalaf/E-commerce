@@ -1,0 +1,11 @@
+<div class="container">
+  <mat-progress-spinner *ngIf="!category" mode="indeterminate" class="text-center"  color="accent"></mat-progress-spinner>
+
+  <div *ngIf="category">
+   <span>title en</span> <h2 class="blockquote blockquote-primary">{{category.title_en}}</h2>
+   <span>title ar</span>   <h2 class="blockquote blockquote-primary">{{category.title_ar}}</h2>
+
+  </div>
+</div>
+
+

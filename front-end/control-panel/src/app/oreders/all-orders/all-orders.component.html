@@ -1,0 +1,56 @@
+
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card ">
+        <div class="card-header">
+          <h4 class="card-title"> Orders Of Users</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table tablesorter " id="">
+              <thead class=" text-primary">
+                <tr>
+                  <th>
+                    Name OF Prodact
+                  </th>
+                  <th>
+                    Name OF User
+                  </th>
+                  <th>
+                    Count
+                  </th>
+                  <th class="text-center">
+                    Status
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let order of orders ">
+                  <td>
+                    <a routerLink="details-prodact/{{order.prodactDetails.prodactId}}">{{order.prodactDetails.title_en}} </a>
+                  </td>
+                  <td>
+                    <a routerLink="details-user/{{order.userId.name}}">{{order.userId.name}} </a>
+                  </td>
+                  <td>
+                   {{order.count}}
+                  </td>
+                  <td class="text-center">
+                    <p *ngIf="order.status == 0"> Cancale</p>
+                    <p *ngIf="order.status == 1">Prossaing</p>
+                    <p *ngIf="order.status ==2">Agrey</p>
+                    <p *ngIf="order.status == 3">Done</p>
+                    <p *ngIf="order.status == 4">Shipping</p>
+                  </td>
+                </tr>
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

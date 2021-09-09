@@ -1,0 +1,135 @@
+<div class="content">
+  <div class="container">
+
+  </div>
+</div>
+<div class="container">
+
+</div>
+<div class="content">
+  <div class="container">
+    <div class="col-md-3 w3ls_dresses_grid_left">
+      <div *ngIf="conditionCateg==0" class="w3ls_dresses_grid_left_grid">
+        <h3>Categories</h3>
+        <div class="w3ls_dresses_grid_left_grid_sub">
+          <div class="ecommerce_dres-type">
+            <ul *ngFor="let categ of categories">
+              <li><a routerLink="/prodacts/category/{{categ._id}}">{{categ.title_en}}</a></li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+      <app-side-bar></app-side-bar>
+    </div>
+    <div class="top-brands">
+      <h3 class="lead">Prodacts </h3>
+    </div>
+    <div class="col-md-9 col-sm-8 women-dresses">
+      <div class="women-set1">
+        <p class="alert alert-danger" *ngIf="messageError">{{messageError}}</p>
+        <div>
+          <div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s"
+            *ngFor="let prodact of prodacts ; index as i">
+            <a>
+              <div class="product-img">
+                <img src="http://localhost:3000/{{prodact.img[0].img}}" alt="" />
+                <div class="p-mask">
+                  <button (click)="clic(i)" type="submit" data-toggle="modal" href="#buy-ticket-modal-business"
+                  class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i>
+                  Add to cart</button>
+
+                </div>
+
+              </div>
+              <br>
+              <div id="buy-ticket-modal-business" class="modal " >
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h3 class="modal-title">Buy Order</h3>
+                      <h4 *ngIf="detailsOrder" class="alert alert-primary lead">Name Prodac Is : <span>{{detailsOrder.title_en}}</span>
+                      </h4>
+
+                      <button type="button" class="close" data-dismiss="" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body" >
+                      <p *ngIf="errorMessageBad" class=" alert-danger alert">
+                        {{errorMessageBad}},you not logged with us after
+                        <a routerLink="/login">logging in </a> or <a routerLink="/register">registering</a> you can buy
+                        order
+                      </p>
+                      <p *ngIf="errorMessage" class=" alert-danger alert">
+                        {{errorMessage}}
+                      </p>
+                      <p *ngIf="message" class="alert alert-info  "><span  class="alert alert-secondary"></span> {{message}} , <a routerLink="/user">chack your profile</a>
+                      </p>
+
+                      <div *ngIf="detailsOrder">
+                        <label>Price Befor Sale is :</label>
+                        <del class="alert alert-primary lead">
+                           {{detailsOrder.price*count.value}} SAR
+                        </del>
+                        <label> Sale is </label>  &nbsp;&nbsp; &nbsp;&nbsp; <mark> {{detailsOrder.sale}} %</mark>
+                        <p class="alert alert-primary lead">After Sale is :
+                          {{(detailsOrder.price - (detailsOrder.price * (detailsOrder.sale / 100))) * count.value}} SAR
+                       </p>
+
+                      </div>
+
+                      <form id='buy' [formGroup]="form" (ngSubmit)="addOrder()">
+
+                        <div class="form-group">
+                          <input type="text" class="form-control" name="address" id="address" placeholder="Your Address"
+                            formControlName="address_en">
+                            <span class="text-right" *ngIf="(address_en.touched || errorMessage) && address_en.invalid">
+                              <strong *ngIf="address_en.errors?.required">Please
+                                enter address</strong>
+                            </span>
+                          <input type="text" class="form-control" name="count" [(ngModel)]="defultCount" id="count"
+                            placeholder="Your count" formControlName="count">
+                            <span class="text-right" *ngIf="(count.touched || errorMessage) && count.invalid">
+                              <strong *ngIf="count.errors?.required">Please
+                                enter count</strong>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                          <input *ngIf="detailsOrder" type="hidden" id="ticket-type" name="ticket-type" class="form-control h"
+                            [(ngModel)]="detailsOrder._id" formControlName="prodactId">
+                          <input type="hidden" id="ticket-type" name="ticket-type" class="form-control h"
+                            [(ngModel)]="userId" formControlName="userId">
+                        </div>
+                        <div class="text-center">
+                          <button type="submit" class="btn btn-dangry">Buy Now</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+              </div>
+            </a>
+
+            <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+            <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+            <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+            <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+            <i class="fa fa-star gray-star" aria-hidden="true"></i>
+
+            <h4><a routerLink="/prodacts/all-prodacts/{{prodact._id}}">{{prodact.title_en |uppercase}}</a></h4>
+            <h5>{{prodact.price}} SAR</h5>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- /.modal -->

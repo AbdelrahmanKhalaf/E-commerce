@@ -1,0 +1,41 @@
+<div class="content">
+  <div class="container">
+    <app-side-bar></app-side-bar>
+    <div class="col-md-9 col-sm-12 w3ls_dresses_grid_left ">
+      <div class="w3ls_dresses_grid_left_grid">
+        <div class="w3ls_dresses_grid_left_grid_sub newwidth">
+          <app-nav-bar></app-nav-bar>
+          <div class="ecommerce_dres-type">
+            <div class="container">
+
+              <div class="col-md-8 col-sm-12 w3ls_dresses_grid_left ">
+                <div class="w3ls_dresses_grid_left_grid">
+                  <h3 class="padding-left">Cahnge Image</h3>
+                  <div class="w3ls_dresses_grid_left_grid_sub newwidth">
+                    <div class="ecommerce_dres-type">
+                      <p class="alert alert-danger" *ngIf="errorMessage && !message">{{errorMessage}}</p>
+                      <p class="alert alert-success" *ngIf="message && !errorMessage" >{{message}}</p>
+                      <form role="form" class="contactForm" (ngSubmit)="fileUpload()">
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <input type="file" name="avatar" class="form-control" id="avatar" (change)="fileSlecet($event)" accept="image/*" />
+                            </div>
+                        </div>
+                        <image-cropper [imageChangedEvent]="imageChangedEvent" (imageCropped)="imageCropped($event)" [aspectRatio]="1 / 1" [resizeToWidth]='150' [onlyScaleDown]='true' [cropperMinWidth]='239' [roundCropper]='true' style="width: 400px;height: 500px;">
+                        </image-cropper>
+                        <div class="text-center btn "><button type="submit" >Update Image</button></div>
+
+                    </form>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>

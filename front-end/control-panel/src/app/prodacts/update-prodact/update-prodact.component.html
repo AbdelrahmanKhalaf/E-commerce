@@ -1,0 +1,43 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Update prodact</h5>
+        </div>
+        <mat-progress-spinner *ngIf="!prodact" mode="indeterminate" class="text-center"  color="accent"></mat-progress-spinner>        <div class="card-body">
+
+        <div class="card-body">
+          <p *ngIf="errorMessage" class="alert alert-danger text-left">{{errorMessage}}</p>
+          <form [formGroup]="Form" (ngSubmit)="register()" *ngIf="prodact">
+            <div class="row">
+              <div class="col-md-6 px-md-1">
+                <div class="form-group">
+                  <label>Price</label>
+                  <input type="text" class="form-control" placeholder="Title Arabic" formControlName="price" [(ngModel)]="prodact.price" >
+                  <div *ngIf="(price?.touched || errorMessage) && price?.invalid  " class="text-danger ">
+                    <strong *ngIf="price?.errors?.required">Please
+                        enter title arabic</strong>
+                </div>
+                </div>
+              </div>
+              <div class="col-md-6 pl-md-1">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Sale</label>
+                  <input type="email" class="form-control" placeholder="Title English" formControlName="sale" [(ngModel)]="prodact.sale">
+                  <div *ngIf="(sale?.touched || errorMessage) && sale?.invalid  " class="text-danger ">
+                    <strong *ngIf="sale?.errors?.required">Please
+                        enter title english</strong>
+                </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button type="submit" (click)="register()" class="btn btn-fill btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+
+</div>

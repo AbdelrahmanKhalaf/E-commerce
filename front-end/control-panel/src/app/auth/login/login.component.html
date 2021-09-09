@@ -1,0 +1,49 @@
+
+<div class="main-panel">
+
+  <div class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="title text-center">Login !! Welocme Back</h3>
+          </div>
+          <div class="card-body ">
+            <p *ngIf="errorMessage" class="alert alert-danger text-right">{{errorMessage}}</p>
+
+            <form  [formGroup]="makeUserRegister" (ngSubmit)="register()">
+              <div class="row">
+
+                <div class="col-md-12 px-md-1">
+                  <div class="form-group">
+                    <label class="text-size-15">Email</label>
+                    <input type="text" class="form-control" placeholder="Email" formControlName="email" >
+                  </div>
+                </div>
+
+              </div>
+              <div class="row">
+
+                <div class="col-md-12 px-md-1 text-ce">
+                  <div class="form-group">
+                    <label class="text-size-15">Password</label>
+                    <input type="password" class="form-control" placeholder="Password" formControlName="password">
+                  </div>
+                </div>
+
+              </div>
+
+
+            </form>
+          </div>
+          <div class="card-footer text-center">
+            <button type="submit" (click)="register()" class="btn btn-fill btn-primary ">Login</button>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,71 @@
+<div class="login">
+
+  <div class="main-agileits">
+    <div class="form-w3agile">
+      <h3>Register</h3>
+      <p class="alert alert-danger" *ngIf="errorMessage && !message">{{errorMessage}}</p>
+      <p class="alert alert-success" *ngIf="message" >{{message}} <a routerLink="/auth/login">Login</a></p>
+      <form [formGroup]="form" (ngSubmit)="makeRegister()" method="post" *ngIf="!message">
+        <div class="key">
+          <i class="fa fa-user" aria-hidden="true"></i>
+          <input type="text" name="name" required="" placeholder="Username" formControlName="name">
+          <span *ngIf="(name.touched || errorMessage) && name.invalid  " class="text-danger ">
+            <strong *ngIf="name.errors?.required">Please
+              enter name</strong>
+          </span>
+          <div class="clearfix"></div>
+        </div>
+        <div class="key">
+          <i class="fa fa-user" aria-hidden="true"></i>
+          <input type="text" name="Phone" required="" placeholder="Phone" formControlName="phone">
+          <span *ngIf="(phone.touched || errorMessage) && phone.invalid  " class="text-danger ">
+            <strong *ngIf="phone.errors?.required">Please
+              enter phone</strong>
+          </span>
+          <div class="clearfix"></div>
+        </div>
+        <div class="key">
+          <i class="fa fa-user" aria-hidden="true"></i>
+          <input type="text" name="address" required="" placeholder="Address" formControlName="address">
+          <span *ngIf="(address.touched || errorMessage) && address.invalid  " class="text-danger ">
+            <strong *ngIf="address.errors?.required">Please
+              enter address</strong>
+          </span>
+          <div class="clearfix"></div>
+        </div>
+        <div class="key">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+          <input type="text" name="Email" required="pleass add email" placeholder="Email" formControlName="email">
+
+          <div class="clearfix"></div>
+          <span *ngIf="(email.touched || errorMessage) && email.invalid  " class="text-danger ">
+            <strong *ngIf="email.errors?.required">Please
+              enter email</strong>
+          </span>
+        </div>
+        <div class="key">
+          <i class="fa fa-lock" aria-hidden="true"></i>
+          <input type="password" name="Password" required="" placeholder="Password" formControlName="password">
+          <span *ngIf="(password.touched || errorMessage) && password.invalid  " class="text-danger ">
+            <strong *ngIf="password.errors?.required">Please
+              enter password</strong>
+          </span>
+          <div class="clearfix"></div>
+        </div>
+        <div class="key">
+          <i class="fa fa-lock" aria-hidden="true"></i>
+          <input type="password" name="Confirm Password" required="" placeholder="Confirm Password"
+            formControlName="confirmPassword">
+            <span *ngIf="(confirmPassword.touched || errorMessage) && confirmPassword.invalid  " class="text-danger ">
+              <strong *ngIf="confirmPassword.errors?.required">Please
+                enter confirmPassword</strong>
+            </span>
+          <div class="clearfix"></div>
+        </div>
+        <p class="text-left" style="margin-bottom: 20px;">are you have aleady email !? <a routerLink="/auth/login"> login</a> </p>
+
+        <input type="submit" value="Register">
+      </form>
+    </div>
+  </div>
+</div>

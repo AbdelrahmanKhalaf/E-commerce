@@ -1,0 +1,68 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Update Attribute</h5>
+        </div>
+        <div class="card-body">
+          <mat-progress-spinner *ngIf="!attribute" mode="indeterminate" class="text-center"  color="accent"></mat-progress-spinner>
+          <div class="card-body">
+          <p *ngIf="errorMessage" class="alert alert-danger text-left">{{errorMessage}}</p>
+          <form [formGroup]="form" (ngSubmit)="makeDone()">
+            <div class="row" *ngIf="attribute">
+              <div class="col-md-12">
+                  <div>
+                    <div>
+                      <div class="row">
+                        <div class="form-group" >
+                          <div class="col-md-12"  >
+                            <label>Value Arabic</label>
+                            <input class="form-control" style="display: block;" formControlName="value_ar" [(ngModel)]="attribute.value_ar">
+
+                          </div>
+
+                        </div>
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <label>Value English</label>
+                            <input class="form-control" style="display: block;" formControlName="value_en" [(ngModel)]="attribute.value_en">
+
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <label>Key Arabic</label>
+                            <input class="form-control" style="display: block;" formControlName="key_ar" [(ngModel)]="attribute.key_ar">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <label>Key English</label>
+                            <input class="form-control" style="display: block;" formControlName="key_en" [(ngModel)]="attribute.key_en">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <br>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+
+              </div>
+            </div>
+
+          <button type="submit" (click)="makeDone()" class="btn btn-fill btn-primary">Save</button>
+
+          </form>
+        </div>
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+
+  </div>

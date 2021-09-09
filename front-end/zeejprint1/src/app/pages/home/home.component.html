@@ -1,0 +1,322 @@
+<div class="banner-agile">
+  <div class="back">
+    <div class="container">
+      <h2>WELCOME TO</h2>
+      <h3>FASHION <span>CLUB</span></h3>
+      <p>Suspendisse sed tellus id libero pretium interdum. Suspendisse potenti. Quisque consectetur elit sit amet
+        vehicula tristique. </p>
+      <a href="about.html">Read More</a>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="banner-bootom-w3-agileits">
+    <div class="container">
+      <div *ngFor="let prodact of prodactSale | slice:0:5">
+        <div class="col-md-6 bb-grids bb-left-agileits-w3layouts"  *ngIf="prodact >= 75">
+          <a routerLink="sale/{{prodact}}">
+            <div class="bb-left-agileits-w3layouts-inner" style="background: url('http://localhost:3000/assets/img/30.jpg');">
+              <h3>SALE</h3>
+              <h4>upto<span>{{prodact}}%</span></h4>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div *ngFor="let prodact of prodactSale | slice:0:5">
+        <div class=" col-md-3  bb-grids bb-right-agileits-w3layouts" *ngIf="prodact < 75 && prodact >= 50">
+          <a routerLink="sale/{{prodact}}">
+            <div class="bb-middle-top">
+              <h3>SALE</h3>
+              <h4>upto<span>{{prodact}}%</span></h4>
+            </div>
+          </a>
+        </div>
+
+        <div class=" col-sm-3  bb-grids bb-right-agileits-w3layouts" *ngIf="prodact < 50 && prodact >= 25">
+
+          <a routerLink="sale/{{prodact}}">
+            <div class="bb-right-top">
+              <dsiv class="back1">
+
+                <h3>SALE</h3>
+                <h4>upto<span>{{prodact}}%</span></h4>
+              </dsiv>
+
+            </div>
+          </a>
+        </div>
+
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="container">
+    <div class="top-brands">
+      <h3 class="lead">Top Brands</h3>
+    </div>
+    <div class="col-md-12 col-sm-12 women-dresses">
+      <div class="women-set1">
+        <div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s"
+          *ngFor="let prodact of prodacts ; index as i">
+          <div class="product-img">
+            <img src="http://localhost:3000/{{prodact.img[0].img}}" alt="" />
+            <div class="p-mask">
+              <form action="#" method="post">
+                <input type="hidden" name="cmd" value="_cart" />
+                <input type="hidden" name="add" value="1" />
+                <input type="hidden" name="w3ls1_item" value="Night dress" />
+                <input type="hidden" name="amount" value="50.00" />
+                <button (click)="clic(i)" type="submit" data-toggle="modal" href="#buy-ticket-modal-business"
+                  class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i>
+                  Add to cart</button>
+
+              </form>
+            </div>
+            <div id="buy-ticket-modal-business" class="modal ">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h3 class="modal-title">Buy Order</h3>
+                    <h4 *ngIf="detailsOrder" class="alert alert-primary lead">Name Prodac Is :
+                      <span>{{detailsOrder.title_en}}</span>
+                    </h4>
+
+                    <button type="button" class="close" data-dismiss="" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p *ngIf="errorMessageBad" class=" alert-danger alert">
+                      {{errorMessageBad}},you not logged with us after
+                      <a routerLink="/login">logging in </a> or <a routerLink="/register">registering</a> you can buy
+                      order
+                    </p>
+                    <p *ngIf="errorMessage" class=" alert-danger alert">
+                      {{errorMessage}}
+                    </p>
+                    <p *ngIf="message" class="alert alert-info  "><span class="alert alert-secondary"></span>
+                      {{message}} , <a routerLink="/user/my-orders">chack your cart</a>
+                    </p>
+
+                    <div *ngIf="detailsOrder">
+                      <label>Price Befor Sale is :</label>
+                      <del class="alert alert-primary lead">
+                        {{detailsOrder.price * count.value}}&nbsp;&nbsp;SAR
+                      </del>
+                      <label> Sale is </label> &nbsp;&nbsp; &nbsp;&nbsp; <mark> {{detailsOrder.sale}} %</mark>
+                      <p class="alert alert-primary lead">After Sale is :
+                        {{(detailsOrder.price - (detailsOrder.price * (detailsOrder.sale / 100))) * count.value}} SAR
+                      </p>
+
+                    </div>
+
+                    <form id='buy' [formGroup]="form" (ngSubmit)="addOrder()">
+
+                      <div class="form-group">
+                        <input type="text" class="form-control" name="address" id="address" placeholder="Your Address"
+                          formControlName="address_en">
+                        <span class="text-right" *ngIf="(address_en.touched || errorMessage) && address_en.invalid">
+                          <strong *ngIf="address_en.errors?.required">Please
+                            enter address</strong>
+                        </span>
+                        <input type="text" #count class="form-control" name="count" [(ngModel)]="defultCount" id="count"
+                          placeholder="Your count" formControlName="count">
+                        <span class="text-right" *ngIf="(count.touched || errorMessage) && count.invalid">
+                          <strong *ngIf="count.errors?.required">Please
+                            enter count</strong>
+                        </span>
+                      </div>
+                      <div class="form-group">
+                        <input *ngIf="detailsOrder" type="hidden" id="ticket-type" name="ticket-type"
+                          class="form-control h" [(ngModel)]="detailsOrder._id" formControlName="prodactId">
+                        <input type="hidden" id="ticket-type" name="ticket-type" class="form-control h"
+                          [(ngModel)]="userId" formControlName="userId">
+                      </div>
+                      <div class="text-center">
+                        <button type="submit" class="btn btn-dangry">Buy Now</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <!-- /.modal-content -->
+              </div>
+              <!-- /.modal-dialog -->
+            </div>
+          </div>
+          <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+          <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+          <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+          <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+          <i class="fa fa-star gray-star" aria-hidden="true"></i>
+          <br>
+          <br>
+          <h4><a routerLink="{{prodact._id}}">{{prodact.title_en |uppercase}}</a></h4>
+          <h5 *ngIf="prodact">{{prodact.price}}SAR</h5>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+<script type="text/javascript">
+  SAR(document).ready(function () {
+    SAR('#horizontalTab').easyResponsiveTabs({
+      type: 'default', //Types: default, vertical, accordion
+      width: 'auto', //auto or any width like 600px
+      fit: true // 100% fit in a container
+    });
+  });
+</script>
+<div class="fandt">
+  <div class="container">
+    <div class="col-md-6 features">
+      <h3>Our Services</h3>
+      <div class="support">
+        <div class="col-md-2 ficon hvr-rectangle-out">
+          <i class="fa fa-user " aria-hidden="true"></i>
+        </div>
+        <div class="col-md-10 ftext">
+          <h4>24/7 online free support</h4>
+          <p>Praesent rutrum vitae ligula sit amet vehicula. Donec eget libero nec dolor tincidunt vulputate.</p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="shipping">
+        <div class="col-md-2 ficon hvr-rectangle-out">
+          <i class="fa fa-bus" aria-hidden="true"></i>
+        </div>
+        <div class="col-md-10 ftext">
+          <h4>Free shipping</h4>
+          <p>Praesent rutrum vitae ligula sit amet vehicula. Donec eget libero nec dolor tincidunt vulputate.</p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="money-back">
+        <div class="col-md-2 ficon hvr-rectangle-out">
+          <i class="fa fa-money" aria-hidden="true"></i>
+        </div>
+        <div class="col-md-10 ftext">
+          <h4>100% money back</h4>
+          <p>Praesent rutrum vitae ligula sit amet vehicula. Donec eget libero nec dolor tincidunt vulputate.</p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <!-- <div class="col-md-6 testimonials">
+      <div class="test-inner">
+        <div class="wmuSlider example1 animated wow slideInUp" data-wow-delay=".5s">
+          <div class="wmuSliderWrapper">
+            <article style="position: absolute; width: 100%; opacity: 0;">
+              <div class="banner-wrap">
+                <img src="./assets/images/c1.png" alt=" " class="img-responsive" />
+                <p>Nam elementum magna id nibh pretium suscipit varius tortor. Phasellus in lorem sed massa consectetur
+                  fermentum. Praesent pellentesque sapien euismod.</p>
+                <h4># Andrew</h4>
+              </div>
+            </article>
+            <article style="position: absolute; width: 100%; opacity: 0;">
+              <div class="banner-wrap">
+                <img src="./assets/images/c2.png" alt=" " class="img-responsive" />
+                <p>Morbi semper, risus dignissim sagittis iaculis, diam est ornare neque, accumsan risus tortor at est.
+                  Vivamus auctor quis lacus sed interdum celerisque.</p>
+                <h4># Lucy</h4>
+              </div>
+            </article>
+            <article style="position: absolute; width: 100%; opacity: 0;">
+              <div class="banner-wrap">
+                <img src="./assets/images/c3.png" alt=" " class="img-responsive" />
+                <p>Fusce non cursus quam, in hendrerit sem. Nam nunc dui, venenatis vitae porta sed, sagittis id nisl.
+                  Pellentesque celerisque eget ullamcorper vehicula. </p>
+                <h4># Martina</h4>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <div class="clearfix"></div>
+  </div>
+  <script src="./assets/js/jquery.wmuSlider.js"></script>
+  <script>
+    SAR('.example1').wmuSlider();
+  </script>
+</div>
+<!-- top-brands -->
+<div class="top-brands">
+  <div class="container">
+    <h3>Top Brands</h3>
+    <div class="sliderfig">
+      <ul id="flexiselDemo1">
+        <li>
+          <img src="/assets/images/4.png" alt=" " class="img-responsive" />
+        </li>
+        <li>
+          <img src="/assets/images/5.png" alt=" " class="img-responsive" />
+        </li>
+        <li>
+          <img src="/assets/images/6.png" alt=" " class="img-responsive" />
+        </li>
+        <li>
+          <img src="/assets/images/7.png" alt=" " class="img-responsive" />
+        </li>
+        <li>
+          <img src="/assets/images/46.jpg" alt=" " class="img-responsive" />
+        </li>
+      </ul>
+    </div>
+    <script type="text/javascript">
+      SAR(window).load(function () {
+        SAR("#flexiselDemo1").flexisel({
+          visibleItems: 4,
+          animationSpeed: 1000,
+          autoPlay: false,
+          autoPlaySpeed: 3000,
+          pauseOnHover: true,
+          enableResponsiveBreakpoints: true,
+          responsiveBreakpoints: {
+            portrait: {
+              changePoint: 480,
+              visibleItems: 1
+            },
+            landscape: {
+              changePoint: 640,
+              visibleItems: 2
+            },
+            tablet: {
+              changePoint: 768,
+              visibleItems: 3
+            }
+          }
+        });
+
+      });
+    </script>
+    <script type="text/javascript" src="js/jquery.flexisel.js"></script>
+  </div>
+</div>
+<!-- //top-brands -->
+<!-- newsletter -->
+<div class="newsletter">
+  <div class="container">
+    <div class="col-md-6 w3agile_newsletter_left">
+      <h3>Newsletter</h3>
+      <p>Excepteur sint occaecat cupidatat non proident, sunt.</p>
+    </div>
+    <div class="col-md-6 w3agile_newsletter_right">
+      <form action="#" method="post">
+        <input type="email" name="Email" value="Email" onfocus="this.value = '';"
+          onblur="if (this.value == '') {this.value = 'Email';}" required="">
+        <input type="submit" value="Subscribe" />
+      </form>
+    </div>
+    <div class="clearfix"> </div>
+  </div>
+</div>
+
+<!-- //cart-js -->

@@ -1,0 +1,115 @@
+<div class="content">
+  <div class="container">
+    <app-side-bar></app-side-bar>
+    <div class="col-md-9 col-sm-12 w3ls_dresses_grid_left ">
+      <div class="w3ls_dresses_grid_left_grid">
+        <div class="w3ls_dresses_grid_left_grid_sub newwidth">
+          <div class="header-bottom-w3ls">
+            <app-nav-bar></app-nav-bar>
+
+          </div>
+          <div class="ecommerce_dres-type">
+            <div class="container">
+              <div class="col-md-8 col-sm-12 w3ls_dresses_grid_left ">
+                <div class="w3ls_dresses_grid_left_grid">
+                  <h3 class="padding-left">My Orders</h3>
+                  <div class="w3ls_dresses_grid_left_grid_sub newwidth">
+                    <p *ngIf="message" class="alert alert-success">{{message}}</p>
+                    <p *ngIf="myOrders && myOrders.lenght==0" class="alert alert-info">You do not have orders </p>
+                    <div class="ecommerce_dres-type">
+                      <ul *ngFor="let order of myOrders , index as i">
+
+                        <li><a routerLink="/prodacts/all-prodacts{{order.prodactDetails.prodactId}}"> <img
+                              src="http://localhost:3000/{{order.prodactDetails.img}} " class="castm" alt=""></a>
+                          &nbsp;&nbsp;
+                          <label>
+                            Name :
+                          </label>
+                          <span>{{order.prodactDetails.title_en}}</span>
+                          &nbsp;&nbsp;
+                          ,
+                          <label>
+                            Count :
+                          </label>
+                          <span>{{order.count}}</span>
+                          &nbsp;&nbsp;
+                          ,
+                          <label>
+                            Address :
+                          </label>
+                          <span>{{order.address_en}}</span>
+                          &nbsp;&nbsp;
+                          ,
+                          <label>
+                            Price Befor Sale :
+                          </label>
+                          <del>{{order.prodactDetails.price * order.count}} SAR </del> ,
+                          <label>After :</label>
+                          <mark>{{(order.prodactDetails.price - (order.prodactDetails.price * (order.prodactDetails.sale
+                            / 100))) *
+                            order.count }} SAR </mark>
+
+                          &nbsp;&nbsp;
+                          ,
+                          <label>
+                            Sale :
+                          </label>
+                          <span>{{order.prodactDetails.sale}} % </span>
+                          &nbsp;&nbsp;
+                          ,
+                          <label>
+                            Status :
+                          </label>
+                          <mark *ngIf="order.status == 0">Prossing </mark>
+                          <mark *ngIf="order.status == 2"> Agre </mark>
+                          <mark *ngIf="order.status == 1"> Delverd </mark>
+                          <mark *ngIf="order.status == 3"> </mark>
+                          <br>
+                          <br>
+
+                          <form>
+                            <button *ngIf="order.status == 0"
+                              (click)="chackeOut(order._id,count.value,i,order.prodactDetails.price)" type="button"
+                              class="btn btn-success">Chack</button>
+                            <button *ngIf="order.status ==0"
+                              (click)="delete(order.prodactDetails.prodactId ,count.value , i  ,order.prodactDetails.price)"
+                              type="button" class="btn btn-danger">X</button>
+                              <div *ngIf="order.status ==0">
+
+                              </div>
+                            <input  class="form-control" #count type="number"
+                              value="{{order.count}}" >
+                          </form>
+                          <!-- &nbsp;&nbsp;
+                       ,
+                       <label>
+                         Total Price is :
+                    </label>
+                    <span>{{order.prodactId.price * order.count | countPrice}} SAR </span> -->
+                        </li>
+                        <hr>
+
+                      </ul>
+                      <!-- <label>
+                        Total Price After Sale Is :
+                      </label>
+                      <span>{{totalPrice}} SAR </span>
+                      <br>
+                      <ul *ngIf="myOrders&& !myOrders[0]">
+                        <p class="alert alert-info">You do not have orders </p>
+                      </ul> -->
+                      <!-- <button *ngIf=" myOrders&& myOrders[0]"  class="btn btn-success">Chack All</button> -->
+                      <button *ngIf=" myOrders&& myOrders[0]" (click)="deleteAll()" class="btn btn-danger">Delete
+                        All</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
