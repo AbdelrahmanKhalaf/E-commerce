@@ -2,7 +2,7 @@
 get oute at 7/2021
 about : 
 mangmante prodacts 
-history prodacts as update prodact or delete or add 
+history prodacts like update prodact or delete or add 
 invintories to orders 
 paymant gtw 
 can user use moer filter to filter prodacts 
